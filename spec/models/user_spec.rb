@@ -26,7 +26,9 @@ RSpec.describe User, type: :model do
     expect(@user).to_not be_valid
   end
 
-  # it "is not valid without an email"
-  # it "is not valid without a start_date"
-  # it "is not valid without a end_date"
+  it "should not create duplicate user" do
+    @user.save
+    duplicate = @user.dup
+    expect(duplicate.save).to be(false)
+  end
 end
