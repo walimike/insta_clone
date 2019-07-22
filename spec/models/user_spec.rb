@@ -21,7 +21,10 @@ RSpec.describe User, type: :model do
     expect(@user).to_not be_valid
   end
 
-  
+  it "should have a valid email" do
+    @user.email = "bosadf"
+    expect(@user).to_not be_valid
+  end
 
   # it "is not valid without an email"
   # it "is not valid without a start_date"
