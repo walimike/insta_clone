@@ -2,10 +2,16 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  it "is not valid without a name" do
+  it "is not valid without a name or email" do
     user = User.new()
     expect(user).to_not be_valid
   end
+
+  # it "is not valid with a  capitalized email" do
+  #   # @user.save
+  #   @user.email = "WALI@email.com"
+  #   expect(@user.save).to be(false)
+  # end
 
   it "is valid with valid attributes" do
     expect(@user).to be_valid
