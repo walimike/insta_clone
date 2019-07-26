@@ -38,4 +38,20 @@ RSpec.describe User, type: :model do
     duplicate = @user.dup
     expect(duplicate.save).to be(false)
   end
+
+  it "password should be present (nonblank)" do
+    @user.password = nil
+    expect(@user).to_not be_valid
+  end
+
+  it "should have matching passwords" do
+    @user.password =  "aasf5%2da" 
+    @user.password_confirmation = "ab9@^231d"
+    expect(@user).to_not be_valid
+  end
+
+  it "should have a long enough password" do
+    @user.password = @user.password_confirmation = "a"
+    expect(@user).to_not be_valid
+  end
 end
