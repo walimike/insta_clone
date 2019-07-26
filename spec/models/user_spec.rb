@@ -7,11 +7,12 @@ RSpec.describe User, type: :model do
     expect(user).to_not be_valid
   end
 
-  # it "is not valid with a  capitalized email" do
-  #   # @user.save
-  #   @user.email = "WALI@email.com"
-  #   expect(@user.save).to be(false)
-  # end
+  it "should save email addresses as lower-case" do
+    mixed_case_email = "Foo@ExAMPle.CoM"
+    @user.email = mixed_case_email
+    @user.save
+    assert_equal mixed_case_email.downcase, @user.reload.email
+  end
 
   it "is valid with valid attributes" do
     expect(@user).to be_valid
