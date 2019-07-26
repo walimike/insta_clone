@@ -2,7 +2,7 @@ class User < ApplicationRecord
     before_save { self.email = email.downcase }
     validates :name,  presence: true, length: { minimum: 3, maximum:20 }
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } , uniqueness: true
-
+    has_secure_password
     before_save :no_email_uppercase
 
     def no_email_uppercase
