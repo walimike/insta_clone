@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     resources :users, :posts
+    resources :sessions, only: [:new, :create, :destroy]
   end
-  # IMPORTANT #
-  # This `match` must be the *last* route in routes.rb
+  
   match '*path', to: 'pages#index', via: :all
 end
