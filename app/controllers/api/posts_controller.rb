@@ -6,6 +6,8 @@ module API
         render json: { posts: posts }
       end
 
+      
+
       def create
         render json: { params: params }
       end
